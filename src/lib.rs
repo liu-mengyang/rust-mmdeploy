@@ -1,3 +1,7 @@
+pub mod detector;
+
+pub extern crate mmdeploy_sys as sys;
+
 #[cfg(test)]
 mod tests {
     #[test]
