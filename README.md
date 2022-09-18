@@ -36,7 +36,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.2.0"
+mmdeploy = "0.2.1"
 ```
 
 ## APIs for MM Codebases
@@ -63,11 +63,11 @@ Good news: Now, you can use Rust language to build your fantastic applications p
 
 ### TOSupport List
 
-[ ] Classifier
-[x] Detector
-[ ] Segmentor
-[ ] Pose Detector
-[ ] Rotated Detector
-[ ] Text Detector
-[ ] Text Recognizer
-[ ] Restorer
+- [ ] Classifier
+- [x] Detector
+- [ ] Segmentor
+- [ ] Pose Detector
+- [ ] Rotated Detector
+- [ ] Text Detector
+- [ ] Text Recognizer
+- [ ] Restorer
