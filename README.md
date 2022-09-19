@@ -5,7 +5,7 @@ Safe MMDeploy Rust wrapper.
 
 In order to successfully build this repo, you are supposed to install some pre-packages.
 
-The following guidance is tested on x86 device on Ubuntu OS.
+The following guidance is tested on Ubuntu OS on x86 device.
 
 **Step 1.** Install Clang required by `Bindgen`.
 
@@ -36,12 +36,25 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.2.1"
+mmdeploy = "0.3.0"
 ```
 
 ## APIs for MM Codebases
 
+Good news: Now, you can use Rust language to build your fantastic applications powered by MMDeploy!
 Take a look by running some examples!
+
+### Classifier API
+
+Deploy image classification models converted by MMDeploy.
+
+The example deploys a ResNet model converted by ONNXRUNTIME target on CPU device.
+
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/resnet`. An optional operation required to fetch MMClassification codebase into `../mmclassification/`. In this example, we use demo-image from it.
+
+```bash
+cargo run --example classifier cpu ../mmdeploy_model/resnet ../mmclassification/demo/dog.jpg
+```
 
 ### Detector API
 
@@ -49,21 +62,21 @@ Deploy object detection models converted by MMDeploy.
 
 The example deploys a FasterRCNN model converted by ONNXRUNTIME target on CPU device.
 
-Before deploying, please follow the guidance from MMDeploy documentation to install it and convert an appropriate model in `../mmdeploy_model/faster-rcnn-ort`. An optional operation required to fetch MMDetection codebase into `../mmdetection/`. In this example, we use demo-image from it.
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/faster-rcnn-ort`. An optional operation required to fetch MMDetection codebase into `../mmdetection/`. In this example, we use demo-image from it.
 
 ```bash
-cargo run --example detector cpu ../mmdeploy_model/faster-rcnn-ort ../mmdetecton/demo/demo.jpg
+cargo run --example detector cpu ../mmdeploy_model/faster-rcnn-ort ../mmdetection/demo/demo.jpg
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_detection.png`.
 
 ![](images/output_detection.png)
 
-Good news: Now, you can use Rust language to build your fantastic applications powered by MMDeploy!
+
 
 ### TOSupport List
 
-- [ ] Classifier
+- [x] Classifier
 - [x] Detector
 - [ ] Segmentor
 - [ ] Pose Detector

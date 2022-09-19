@@ -3,7 +3,6 @@ extern crate opencv;
 
 use std::env;
 
-use mmdeploy::detector::detector_release;
 use opencv::{
     core::{Scalar, Rect},
     types::VectorOfi32,
@@ -11,7 +10,7 @@ use opencv::{
     imgproc::{rectangle},
 };
 
-pub use mmdeploy::detector::{detector_create_by_path, detector_apply, detector_release_result};
+pub use mmdeploy::detector::{detector_create_by_path, detector_apply, detector_release_result, detector_release};
 
 
 fn main() {

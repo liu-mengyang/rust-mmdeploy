@@ -1,6 +1,5 @@
 use std::os::raw::c_char;
 use std::ffi::CString;
-use std::slice;
 
 use sys::*;
 use opencv::prelude::*;
@@ -72,7 +71,6 @@ impl DetResult {
 pub fn detector_create_by_path(model_path: &str, device_name: &str, device_id: i32) -> Result<mmdeploy_detector_t, mmdeploy_status_t> {
     unsafe{
         let mut detector: mmdeploy_detector_t = &mut mmdeploy_detector::new();
-        // let mut detector: mmdeploy_detector_t = &mut mmdeploy_detector;
 
         let model_path_cstr = CString::new(&model_path[..]).unwrap();
         let model_path_i8: *const c_char = model_path_cstr.as_ptr() as *const c_char;
