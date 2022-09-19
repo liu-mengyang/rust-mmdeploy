@@ -36,7 +36,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.3.0"
+mmdeploy = "0.4.0"
 ```
 
 ## APIs for MM Codebases
@@ -72,13 +72,28 @@ A rendered result we can take a look located in the current directory and is nam
 
 ![](images/output_detection.png)
 
+### Segmentor API
+
+Deploy object segmentation models converted by MMDeploy.
+
+The example deploys a DeepLabv3 model converted by ONNXRUNTIME target on CPU device.
+
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/deeplabv3`. An optional operation required to fetch MMSegmentation codebase into `../mmsegmentation/`. In this example, we use demo-image from it.
+
+```bash
+cargo run --example segmentor cpu ../mmdeploy_model/deeplabv3 ../mmsegmentation/demo/demo.png
+```
+
+A rendered result we can take a look located in the current directory and is named `output_segmentation.png`.
+
+![](images/output_segmentation.png)
 
 
 ### TOSupport List
 
 - [x] Classifier
 - [x] Detector
-- [ ] Segmentor
+- [x] Segmentor
 - [ ] Pose Detector
 - [ ] Rotated Detector
 - [ ] Text Detector
