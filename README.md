@@ -92,13 +92,28 @@ A rendered result we can take a look located in the current directory and is nam
 
 ![](images/output_segmentation.png)
 
+### Pose detector API
+
+Deploy pose detection models converted by MMDeploy.
+
+The example deploys a HRNet model converted by ONNXRUNTIME target on CPU device.
+
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/hrnet`. An optional operation required to fetch MMSegmentation codebase into `../mmpose/`. In this example, we use demo-image from it.
+
+```bash
+cargo run --example pose_detector cpu ../mmdeploy_model/hrnet ../mmdeploy/demo/resources/human-pose.jpg
+```
+
+A rendered result we can take a look located in the current directory and is named `output_segmentation.png`.
+
+![](images/output_pose.png)
 
 ### TOSupport List
 
 - [x] Classifier
 - [x] Detector
 - [x] Segmentor
-- [ ] Pose Detector
+- [x] Pose Detector
 - [ ] Rotated Detector
 - [ ] Text Detector
 - [ ] Text Recognizer

@@ -1,6 +1,7 @@
 pub mod classifier;
 pub mod detector;
 pub mod segmentor;
+pub mod pose_detector;
 
 
 pub extern crate mmdeploy_sys as sys;

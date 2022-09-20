@@ -1,6 +1,6 @@
 [package]
 name = "mmdeploy"
-version = "0.4.1"
+version = "0.5.0"
 edition = "2021"
 license = "Apache-2.0"
 description = "Safe MMDeploy Rust wrapper"
@@ -10,6 +10,6 @@ keywords = ["mmdeploy", "deployment"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mmdeploy-sys = "0.5.0"
+mmdeploy-sys = "0.6.0"
 opencv = "0.68"
 rand = "0.8.5"
