@@ -1,9 +1,13 @@
-# rust-mmdeploy
+![](images/rust-mmdeploy-logo.png)
+
+
+## Introduction
+
 Safe MMDeploy Rust wrapper.
 
 ## Prerequisites
 
-In order to successfully build this repo, you are supposed to install some pre-packages.
+To make sure the building of this repo in success, you should install some pre-packages.
 
 The following guidance is tested on Ubuntu OS on x86 device.
 
