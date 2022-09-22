@@ -40,7 +40,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.7.0"
+mmdeploy = "0.8.0"
 ```
 
 ## APIs for MM Codebases
@@ -126,7 +126,7 @@ A rendered result we can take a look located in the current directory and is nam
 
 ### OCR API
 
-Deploy pose detection models converted by MMDeploy.
+Deploy text detection and text recognition models converted by MMDeploy.
 
 The example deploys a DBNet model for detection and a CRNN model for recognition both converted by ONNXRUNTIME target on CPU device.
 
@@ -140,6 +140,22 @@ A rendered result we can take a look located in the current directory and is nam
 
 ![](images/output_ocr.png)
 
+### Restorer API
+
+Deploy restorer models converted by MMDeploy.
+
+The example deploys an EDSR model for restoration converted by ONNXRUNTIME target on CPU device.
+
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/edsr`. Optional operations required to fetch MMEditing codebase into `../mmediting/`. In this example, we use demo-image from it.
+
+```bash
+cargo run --example restorer cpu ../mmdeploy_model/edsr ../mmediting/tests/data/lq/baboon_x4.png
+```
+
+A rendered result we can take a look located in the current directory and is named `output_restorer.png`.
+
+![](images/output_restorer.png)
+
 ### TOSupport List
 
 - [x] Classifier
@@ -149,4 +165,11 @@ A rendered result we can take a look located in the current directory and is nam
 - [x] Rotated Detector
 - [x] Text Detector
 - [x] Text Recognizer
-- [ ] Restorer
+- [x] Restorer
+
+### TODO List
+
+- [ ] PR for contributing a rust-mmdeploy-CI into MMDeploy
+- [ ] Test with TensorRT prebuilt package
+- [ ] Tutorial of rust-mmdeploy
+- [ ] Documentation of rust-mmdeploy and rust-mmdeploy-sys
