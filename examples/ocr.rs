@@ -39,10 +39,8 @@ fn main() {
     let text_detector = text_detector_create_by_path(det_model_path, device_name, 0).unwrap();
     let text_recognizer = text_recognizer_create_by_path(reg_model_path, device_name, 0).unwrap();
 
-    println!("start");
     let text_det_result = text_detector_apply(text_detector, &img, 1).unwrap();
 
-    println!("here");
     let bbox_count = text_det_result.get_result_count(0);
 
     println!("bbox_count={}", bbox_count);

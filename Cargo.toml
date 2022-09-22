@@ -10,6 +10,6 @@ keywords = ["mmdeploy", "deployment"]
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mmdeploy-sys = "0.8.0"
+mmdeploy-sys = "0.8.1"
 opencv = "0.68"
 rand = "0.8.5"
