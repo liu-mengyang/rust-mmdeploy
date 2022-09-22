@@ -25,12 +25,22 @@ wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.
 tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 cd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
 export MMDEPLOY_DIR=$(pwd)
+export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib
 ```
 
-**Step 3.** Install OpenCV required by examples.
+**Step 3.** (Optional) Install OpenCV required by examples.
 
 ```bash
 apt install libopencv-dev
+```
+
+**Step 4.** (Optional) Download ONNXRuntime prebuilt package and link required by examples.
+
+```bash
+wget https://github.com/microsoft/onnxruntime/releases/download/v1.8.1/onnxruntime-linux-x64-1.8.1.tgz
+tar -zxvf onnxruntime-linux-x64-1.8.1.tgz
+export ONNXRUNTIME_DIR=$(pwd)/onnxruntime-linux-x64-1.8.1
+export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 ```
 
 
