@@ -3,6 +3,8 @@ pub mod detector;
 pub mod segmentor;
 pub mod pose_detector;
 pub mod rotated_detector;
+pub mod text_detector;
+pub mod text_recognizer;
 
 
 pub extern crate mmdeploy_sys as sys;
