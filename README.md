@@ -25,7 +25,7 @@ wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.
 tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 cd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
 export MMDEPLOY_DIR=$(pwd)
-export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib
+export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
 ```
 
 **Step 3.** (Optional) Install OpenCV required by examples.
