@@ -40,7 +40,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.6.0"
+mmdeploy = "0.7.0"
 ```
 
 ## APIs for MM Codebases
@@ -98,7 +98,7 @@ Deploy pose detection models converted by MMDeploy.
 
 The example deploys an HRNet model converted by ONNXRUNTIME target on CPU device.
 
-Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/hrnet`. An optional operation required to fetch MMSegmentation codebase into `../mmpose/`. In this example, we use demo-image from it.
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/hrnet`. An optional operation required to fetch MMPose codebase into `../mmpose/`. In this example, we use demo-image from it.
 
 ```bash
 cargo run --example pose_detector cpu ../mmdeploy_model/hrnet ../mmdeploy/demo/resources/human-pose.jpg
@@ -110,11 +110,11 @@ A rendered result we can take a look located in the current directory and is nam
 
 ### Rotated detector API
 
-Deploy pose detection models converted by MMDeploy.
+Deploy rotated detection models converted by MMDeploy.
 
 The example deploys a RetinaNet model converted by ONNXRUNTIME target on CPU device.
 
-Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/retinanet`. An optional operation required to fetch MMSegmentation codebase into `../mmrotate/`. In this example, we use demo-image from it.
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert an appropriate model in `../mmdeploy_model/retinanet`. An optional operation required to fetch MMRotate codebase into `../mmrotate/`. In this example, we use demo-image from it.
 
 ```bash
 cargo run --example rotated_detector cpu ../mmdeploy_model/retinanet ../mmrotate/demo/demo.jpg
@@ -124,6 +124,22 @@ A rendered result we can take a look located in the current directory and is nam
 
 ![](images/output_rotated_detection.png)
 
+### OCR API
+
+Deploy pose detection models converted by MMDeploy.
+
+The example deploys a DBNet model for detection and a CRNN model for recognition both converted by ONNXRUNTIME target on CPU device.
+
+Before deploying, please follow the guidance from MMDeploy [documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install it and convert appropriate models in `../mmdeploy_model/dbnet` and `../mmdeploy_model/crnn`. Optional operations required to fetch MMOCR codebase into `../mmocr/`. In this example, we use demo-image from it.
+
+```bash
+cargo run --example ocr cpu ../mmdeploy_model/dbnet ../mmdeploy_model/crnn ../mmocr/demo/demo_text_det.jpg
+```
+
+A rendered result we can take a look located in the current directory and is named `output_ocr.png`.
+
+![](images/output_ocr.png)
+
 ### TOSupport List
 
 - [x] Classifier
@@ -131,6 +147,6 @@ A rendered result we can take a look located in the current directory and is nam
 - [x] Segmentor
 - [x] Pose Detector
 - [x] Rotated Detector
-- [ ] Text Detector
-- [ ] Text Recognizer
+- [x] Text Detector
+- [x] Text Recognizer
 - [ ] Restorer
