@@ -40,7 +40,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.4.0"
+mmdeploy = "0.6.0"
 ```
 
 ## APIs for MM Codebases
