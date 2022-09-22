@@ -11,10 +11,11 @@ To make sure the building of this repo in success, you should install some pre-p
 
 The following guidance is tested on Ubuntu OS on x86 device.
 
-**Step 1.** Install Clang required by `Bindgen`.
+**Step 1.** Install Clang and Rust required by `Bindgen`.
 
 ```bash
-apt install llvm-dev libclang-dev clang
+apt install llvm-dev libclang-dev clang curl
+curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
 **Step 2.** Download and install pre-built mmdeploy package. In this guidance, we choose a MMdepoloy prebuilt package target on ONNXRUNTIME-linux-x86.
@@ -22,8 +23,8 @@ apt install llvm-dev libclang-dev clang
 ```bash
 wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-cd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-export $MMDEPLOY_DIR=$(pwd)
+cd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
+export MMDEPLOY_DIR=$(pwd)
 ```
 
 **Step 3.** Install OpenCV required by examples.
