@@ -18,14 +18,21 @@ apt install llvm-dev libclang-dev clang curl wget git-lfs
 curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 ```
 
-**Step 2.** Download and install pre-built mmdeploy package. In this guidance, we choose a MMdepoloy prebuilt package target on ONNXRUNTIME-linux-x86.
+**Step 2.** Download and install pre-built mmdeploy package and onnxruntime. In this guidance, we choose a MMdepoloy prebuilt package target on ONNXRUNTIME-linux-x86.
 
 ```bash
 wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-cd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
+pushd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
 export MMDEPLOY_DIR=$(pwd)
 export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
+popd
+
+wget https://github.com/microsoft/onnxruntime/releases/download/v1.8.1/onnxruntime-linux-x64-1.8.1.tgz
+tar -zxvf onnxruntime-linux-x64-1.8.1.tgz
+cd onnxruntime-linux-x64-1.8.1
+export ONNXRUNTIME_DIR=$(pwd)
+export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 ```
 
 **Step 3.** (Optional) Install OpenCV required by examples.
