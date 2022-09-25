@@ -63,7 +63,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.8.0"
+mmdeploy = "0.8.1"
 ```
 
 ## APIs for MM Codebases
