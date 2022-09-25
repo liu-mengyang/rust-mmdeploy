@@ -90,14 +90,14 @@ pub fn pose_detector_apply(pose_detector: mmdeploy_pose_detector_t, img: &Mat, m
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut poseResult = PoseResult::new();
+        let pose_result = PoseResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_pose_detector_apply(pose_detector, mat, mat_count, poseResult.results).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_pose_detector_apply(pose_detector, mat, mat_count, pose_result.results).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(poseResult)
+        Ok(pose_result)
     }
 }
 

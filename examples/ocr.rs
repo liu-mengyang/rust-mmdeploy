@@ -61,7 +61,6 @@ fn main() {
             let pt = result.get_bbox(j as isize);
             format!("x: {}, y: {}, ", pt.x, pt.y);
             poly_points.push(Point{x: pt.x as i32, y: pt.y as i32});
-            println!();
         }
         
         let color: Scalar = Scalar::new(0.0, 255.0, 0.0, 0.0);
@@ -71,7 +70,7 @@ fn main() {
 
     let params = VectorOfi32::new();
 
-    let succcess = imwrite("output_ocr.png", &img, &params).unwrap();
+    let _succcess = imwrite("output_ocr.png", &img, &params).unwrap();
 
     text_detector_release_result(text_det_result, 1);
     text_detector_release(text_detector);

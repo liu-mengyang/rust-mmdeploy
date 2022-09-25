@@ -76,14 +76,14 @@ pub fn classifier_apply(classifier: mmdeploy_classifier_t, img: &Mat, mat_count:
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut clsResult = ClsResult::new();
+        let cls_result = ClsResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_classifier_apply(classifier, mat, mat_count, clsResult.results, clsResult.result_count).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_classifier_apply(classifier, mat, mat_count, cls_result.results, cls_result.result_count).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(clsResult)
+        Ok(cls_result)
     }
 }
 

@@ -69,7 +69,7 @@ fn main() {
 
     let params = VectorOfi32::new();
 
-    let succcess = imwrite("output_detection.png", &img, &params).unwrap();
+    let _succcess = imwrite("output_detection.png", &img, &params).unwrap();
 
     detector_release_result(det_result, 1);
     detector_release(detector);

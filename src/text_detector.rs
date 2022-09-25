@@ -33,7 +33,7 @@ impl TextDet {
     }
     
     pub fn get_bbox(&self, point_index: isize) -> Point {
-        unsafe {Point::from(self.bbox[point_index as usize])}
+        Point::from(self.bbox[point_index as usize])
     }
 }
 
@@ -94,15 +94,14 @@ pub fn text_detector_apply(text_detector: mmdeploy_text_detector_t, img: &Mat, m
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut textDetResult = TextDetResult::new();
+        let text_det_result = TextDetResult::new();
 
-        println!("apply");
-        let status: mmdeploy_status_t = mmdeploy_text_detector_apply(text_detector, mat, mat_count, textDetResult.results, textDetResult.result_count).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_text_detector_apply(text_detector, mat, mat_count, text_det_result.results, text_det_result.result_count).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(textDetResult)
+        Ok(text_det_result)
     }
 }
 

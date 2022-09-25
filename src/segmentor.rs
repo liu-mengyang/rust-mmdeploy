@@ -21,7 +21,7 @@ impl Seg {
         }
     }
 
-    pub fn getMask(&self, index: i32) -> i32{
+    pub fn get_mask(&self, index: i32) -> i32{
         unsafe { *self.mask.offset(index as isize) }
     }
 }
@@ -75,14 +75,14 @@ pub fn segmentor_apply(segmentor: mmdeploy_segmentor_t, img: &Mat, mat_count: i3
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut segResult = SegResult::new();
+        let seg_result = SegResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_segmentor_apply(segmentor, mat, mat_count, segResult.results).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_segmentor_apply(segmentor, mat, mat_count, seg_result.results).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(segResult)
+        Ok(seg_result)
     }
 }
 

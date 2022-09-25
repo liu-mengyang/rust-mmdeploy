@@ -22,7 +22,7 @@ fn main() {
     let image_path = &args[3];
 
     // opencv
-    let mut img = imread(image_path, IMREAD_COLOR).unwrap();
+    let img = imread(image_path, IMREAD_COLOR).unwrap();
 
     let restorer = restorer_create_by_path(model_path, device_name, 0).unwrap();
 
@@ -40,11 +40,11 @@ fn main() {
 
         let mut res_img = Mat::new_rows_cols_with_default(res.height, res.width, CV_8UC3, color).unwrap();
 
-        cvt_color(&sr_img, &mut res_img, COLOR_RGB2BGR, 3);
+        let _cvt_success = cvt_color(&sr_img, &mut res_img, COLOR_RGB2BGR, 3).unwrap();
 
         let params = VectorOfi32::new();
 
-        let succcess = imwrite("output_restorer.png", &res_img, &params).unwrap();
+        let _succcess = imwrite("output_restorer.png", &res_img, &params).unwrap();
 
     }
 

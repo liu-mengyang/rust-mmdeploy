@@ -18,7 +18,7 @@ fn main() {
     let image_path = &args[3];
 
     // opencv
-    let mut img = imread(image_path, IMREAD_COLOR).unwrap();
+    let img = imread(image_path, IMREAD_COLOR).unwrap();
 
     let classifier = classifier_create_by_path(model_path, device_name, 0).unwrap();
 

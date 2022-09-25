@@ -38,7 +38,7 @@ fn main() {
 
     let params = VectorOfi32::new();
 
-    let succcess = imwrite("output_pose.png", &img, &params).unwrap();
+    let _succcess = imwrite("output_pose.png", &img, &params).unwrap();
 
     pose_detector_release_result(pose_det_result, 1);
     pose_detector_release(pose_detector);

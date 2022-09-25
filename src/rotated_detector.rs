@@ -79,14 +79,14 @@ pub fn rotated_detector_apply(rotated_detector: mmdeploy_rotated_detector_t, img
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut rotResult = RotResult::new();
+        let rot_result = RotResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_rotated_detector_apply(rotated_detector, mat, mat_count, rotResult.results, rotResult.result_count).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_rotated_detector_apply(rotated_detector, mat, mat_count, rot_result.results, rot_result.result_count).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(rotResult)
+        Ok(rot_result)
     }
 }
 

@@ -1,6 +1,5 @@
 use std::os::raw::c_char;
 use std::ffi::{CString, CStr};
-use std::str::Utf8Error;
 
 use sys::*;
 use opencv::prelude::*;
@@ -76,14 +75,14 @@ pub fn text_recognizer_apply_bbox(text_recognizer: mmdeploy_text_recognizer_t, i
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut recResult = RecResult::new();
+        let rec_result = RecResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_text_recognizer_apply_bbox(text_recognizer, mat, mat_count, *bboxes as *const mmdeploy_text_detection_t, &bbox_count, recResult.results).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_text_recognizer_apply_bbox(text_recognizer, mat, mat_count, *bboxes as *const mmdeploy_text_detection_t, &bbox_count, rec_result.results).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(recResult)
+        Ok(rec_result)
     }
 }
 

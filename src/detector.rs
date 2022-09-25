@@ -99,14 +99,14 @@ pub fn detector_apply(detector: mmdeploy_detector_t, img: &Mat, mat_count: i32) 
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut detResult = DetResult::new();
+        let det_result = DetResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_detector_apply(detector, mat, mat_count, detResult.results, detResult.result_count).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_detector_apply(detector, mat, mat_count, det_result.results, det_result.result_count).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(detResult)
+        Ok(det_result)
     }
 }
 

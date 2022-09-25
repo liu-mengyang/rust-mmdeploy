@@ -75,14 +75,14 @@ pub fn restorer_apply(restorer: mmdeploy_restorer_t, img: &Mat, mat_count: i32) 
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
         };
 
-        let mut resResult = ResResult::new();
+        let res_result = ResResult::new();
 
-        let status: mmdeploy_status_t = mmdeploy_restorer_apply(restorer, mat, mat_count, resResult.results).try_into().unwrap();
+        let status: mmdeploy_status_t = mmdeploy_restorer_apply(restorer, mat, mat_count, res_result.results).try_into().unwrap();
 
         if status != mmdeploy_status_t_MMDEPLOY_SUCCESS {
             return Err(status);
         }
-        Ok(resResult)
+        Ok(res_result)
     }
 }
 

@@ -55,22 +55,22 @@ fn main() {
 
         let color: Scalar = Scalar::new(0.0, 255.0, 0.0, 0.0);
 
-        let mut vecP = VectorOfPoint::new();
-        vecP.push(p1);
-        vecP.push(p2);
-        vecP.push(p3);
-        vecP.push(p4);
+        let mut vec_p = VectorOfPoint::new();
+        vec_p.push(p1);
+        vec_p.push(p2);
+        vec_p.push(p3);
+        vec_p.push(p4);
 
-        let mut vecp: Vector<VectorOfPoint> = Vector::new();
-        vecp.push(vecP);
+        let mut vec_result: Vector<VectorOfPoint> = Vector::new();
+        vec_result.push(vec_p);
 
-        draw_contours(&mut img, &vecp, -1, color, 2, 8, &no_array(), i32::MAX, Point{x: 0, y:0});
+        let _success = draw_contours(&mut img, &vec_result, -1, color, 2, 8, &no_array(), i32::MAX, Point{x: 0, y:0}).unwrap();
     }
 
 
     let params = VectorOfi32::new();
 
-    let succcess = imwrite("output_rotated_detection.png", &img, &params).unwrap();
+    let _succcess = imwrite("output_rotated_detection.png", &img, &params).unwrap();
 
     rotated_detector_release_result(rotated_det_result);
     rotated_detector_release(rotated_detector);
