@@ -78,8 +78,6 @@ You can
 * Directly use converted models [here](https://github.com/liu-mengyang/mmdeploy-converted-models) ^_^
 * Or follow [MMDeploy documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install and convert appropriate model
 
-In this example, we use demo-image from relative algorithm repo.
-
 ### Classifier API
 
 Deploy image classification models converted by MMDeploy.
@@ -87,7 +85,7 @@ Deploy image classification models converted by MMDeploy.
 The example deploys a ResNet model converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example classifier cpu ../mmdeploy-converted-models/resnet ../mmclassification/demo/dog.jpg
+cargo run --example classifier cpu ../mmdeploy-converted-models/resnet ./images/demos/mmcls_demo.jpg
 ```
 
 ### Detector API
@@ -97,7 +95,7 @@ Deploy object detection models converted by MMDeploy.
 The example deploys a FasterRCNN model converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example detector cpu ../mmdeploy-converted-models/faster-rcnn-ort ../mmdetection/demo/demo.jpg
+cargo run --example detector cpu ../mmdeploy-converted-models/faster-rcnn-ort ./images/demos/mmdet_demo.jpg
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_detection.png`.
@@ -111,7 +109,7 @@ Deploy object segmentation models converted by MMDeploy.
 The example deploys a DeepLabv3 model converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example segmentor cpu ../mmdeploy-converted-models/deeplabv3 ../mmsegmentation/demo/demo.png
+cargo run --example segmentor cpu ../mmdeploy-converted-models/deeplabv3 ./images/demos/mmseg_demo.png
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_segmentation.png`.
@@ -125,7 +123,7 @@ Deploy pose detection models converted by MMDeploy.
 The example deploys an HRNet model converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example pose_detector cpu ../mmdeploy-converted-models/hrnet ../mmdeploy/demo/resources/human-pose.jpg
+cargo run --example pose_detector cpu ../mmdeploy-converted-models/hrnet ./images/demos/mmpose_demo.jpg
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_pose.png`.
@@ -139,7 +137,7 @@ Deploy rotated detection models converted by MMDeploy.
 The example deploys a RetinaNet model converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example rotated_detector cpu ../mmdeploy-converted-models/retinanet ../mmrotate/demo/demo.jpg
+cargo run --example rotated_detector cpu ../mmdeploy-converted-models/retinanet ./images/demos/mmrotate_demo.jpg
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_rotated_detection.png`.
@@ -153,7 +151,7 @@ Deploy text detection and text recognition models converted by MMDeploy.
 The example deploys a DBNet model for detection and a CRNN model for recognition both converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example ocr cpu ../mmdeploy-converted-models/dbnet ../mmdeploy-converted-models/crnn ../mmocr/demo/demo_text_det.jpg
+cargo run --example ocr cpu ../mmdeploy-converted-models/dbnet ../mmdeploy-converted-models/crnn ./images/demos/mmocr_demo.jpg
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_ocr.png`.
@@ -167,7 +165,7 @@ Deploy restorer models converted by MMDeploy.
 The example deploys an EDSR model for restoration converted by ONNXRUNTIME target on CPU device.
 
 ```bash
-cargo run --example restorer cpu ../mmdeploy-converted-models/edsr ../mmediting/tests/data/lq/baboon_x4.png
+cargo run --example restorer cpu ../mmdeploy-converted-models/edsr ./images/demos/mmediting_demo.png
 ```
 
 A rendered result we can take a look located in the current directory and is named `output_restorer.png`.
