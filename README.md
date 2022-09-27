@@ -24,7 +24,7 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
 pushd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
-export MMDEPLOY_DIR=$(pwd)
+export MMDEPLOY_DIR=$(pwd)/sdk
 export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
 popd
 
