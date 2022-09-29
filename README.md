@@ -5,6 +5,11 @@
 
 Safe MMDeploy Rust wrapper.
 
+## News
+
+- (2022.9.29) This repo has been added into the [OpenMMLab ecosystem](https://openmmlab.com/ecosystem).
+- (2022.9.27) This repo has been added into the [MMDeploy CI](https://github.com/open-mmlab/mmdeploy/blob/master/.github/workflows/rust_api.yml).
+
 ## Prerequisites
 
 To make sure the building of this repo in success, you should install some pre-packages.
@@ -41,16 +46,7 @@ export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 apt install libopencv-dev
 ```
 
-**Step 4.** (Optional) Download ONNXRuntime prebuilt package and link required by examples.
-
-```bash
-wget https://github.com/microsoft/onnxruntime/releases/download/v1.8.1/onnxruntime-linux-x64-1.8.1.tgz
-tar -zxvf onnxruntime-linux-x64-1.8.1.tgz
-export ONNXRUNTIME_DIR=$(pwd)/onnxruntime-linux-x64-1.8.1
-export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
-```
-
-**Step 5.** (Optional) Download converted onnx model by mmdeploy
+**Step 4.** (Optional) Download converted onnx model by mmdeploy
 ```bash
 git clone https://github.com/liu-mengyang/mmdeploy-converted-models --depth=1
 ```
