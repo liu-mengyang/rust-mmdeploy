@@ -1,6 +1,6 @@
 ![](images/rust-mmdeploy-logo.png)
 
-[![crates.io](https://img.shields.io/crates/v/mmdeploy)](https://crates.io/crates/ffmpeg-next)
+[![crates.io](https://img.shields.io/crates/v/mmdeploy)](https://crates.io/crates/mmdeploy)
 
 ## Introduction
 
