@@ -17,7 +17,7 @@ To make sure the building of this repo successful, you should install some pre-p
 
 The following guidance is tested on Ubuntu OS on x86 device.
 
-**Step 0.** Install Rust.
+**Step 0.** Install Rust if you don't have.
 
 ```bash
 apt install curl
@@ -30,22 +30,53 @@ curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
 apt install llvm-dev libclang-dev clang
 ```
 
-**Step 2.** Download and install pre-built mmdeploy package and onnxruntime. In this guidance, we choose an MMdepoloy prebuilt package target on ONNXRUNTIME-linux-x86.
+**Step 2.** Download and install pre-built mmdeploy package. Currently, `mmdeploy-sys` is built upon the pre-built package of `mmdeploy` so this repo only supports OnnxRuntime and TensorRT backends. Don't be disappoint, the script of building from source is ongoing, and after finishing that we can deploy models with all backends supported by `mmdeploy` in Rust.
 
 ```bash
 apt install wget
-wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.8.0/mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-tar -zxvf mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-pushd mmdeploy-0.8.0-linux-x86_64-onnxruntime1.8.1
+```
+
+**If you wants deploy models with OnnxRuntime:**
+
+```bash
+# Download and link to MMDeploy-onnxruntime pre-built package
+wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.9.0/mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1.tar.gz
+tar -zxvf mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1.tar.gz
+pushd mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1
 export MMDEPLOY_DIR=$(pwd)/sdk
 export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
 popd
 
+# Download and link to OnnxRuntime engine
 wget https://github.com/microsoft/onnxruntime/releases/download/v1.8.1/onnxruntime-linux-x64-1.8.1.tgz
 tar -zxvf onnxruntime-linux-x64-1.8.1.tgz
 cd onnxruntime-linux-x64-1.8.1
 export ONNXRUNTIME_DIR=$(pwd)
 export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
+```
+
+**If you wants deploy models with TensorRT:**
+
+Pay attention to the version of cuda: 11. So this script is only supported for machines with cuda-11.x.
+
+```bash
+# Download and link to MMDeploy-tensorrt pre-built package
+wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.9.0/mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0.tar.gz
+tar -zxvf mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0.tar.gz
+pushd mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0
+export MMDEPLOY_DIR=$(pwd)/sdk
+export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
+popd
+
+# Download and link to TensorRT engine
+# !!! Download TensorRT-8.2.3.0 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This link maybe helpful: https://developer.nvidia.com/nvidia-tensorrt-8x-download.
+export TENSORRT_DIR=$(pwd)/TensorRT-8.2.3.0
+export LD_LIBRARY_PATH=${TENSORRT_DIR}/lib:$LD_LIBRARY_PATH
+
+# Download and link to CUDA and cuDNN libraries
+# !!! Download cuDNN 8.2.1 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This two links are maybe helpful: CUDA: https://developer.nvidia.com/cuda-downloads; cuDNN: https://developer.nvidia.com/rdp/cudnn-download.
+export CUDNN_DIR=$(pwd)/cuda
+export LD_LIBRARY_PATH=$CUDNN_DIR/lib64:$LD_LIBRARY_PATH
 ```
 
 **Step 3.** (Optional) Install OpenCV required by examples.
@@ -54,7 +85,7 @@ export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 apt install libopencv-dev
 ```
 
-**Step 4.** (Optional) Download converted onnx model by mmdeploy
+**Step 4.** (Optional) Download converted onnx models by `mmdeploy-converted-models`
 ```bash
 apt install git-lfs
 git clone https://github.com/liu-mengyang/mmdeploy-converted-models --depth=1
@@ -68,13 +99,13 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.8.2"
+mmdeploy = "0.9.0"
 ```
 
 ## APIs for MM Codebases
 
 Good news: Now, you can use Rust language to build your fantastic applications powered by MMDeploy!
-Take a look by running some examples! 
+Take a look by running some examples! In these examples, `CPU` is the default inference device. If you choose to deploy models on `GPU`, you will replace all `cpu` in test commands with `cuda`.
 
 ### Convert Models
 
@@ -192,5 +223,5 @@ A rendered result we can take a look located in the current directory and is nam
 
 - [x] PR for contributing a rust-mmdeploy-CI into MMDeploy
 - [x] Test with TensorRT prebuilt package
-- [ ] Tutorial of rust-mmdeploy
 - [ ] Documentation of rust-mmdeploy and rust-mmdeploy-sys
+- [ ] Tutorial of rust-mmdeploy
