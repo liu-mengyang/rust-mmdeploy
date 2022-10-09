@@ -36,7 +36,7 @@ apt install llvm-dev libclang-dev clang
 apt install wget
 ```
 
-**If you wants deploy models with OnnxRuntime:**
+**If you want to deploy models with OnnxRuntime:**
 
 ```bash
 # Download and link to MMDeploy-onnxruntime pre-built package
@@ -55,7 +55,7 @@ export ONNXRUNTIME_DIR=$(pwd)
 export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 ```
 
-**If you wants deploy models with TensorRT:**
+**If you want to deploy models with TensorRT:**
 
 Pay attention to the version of cuda: 11. So this script is only supported for machines with cuda-11.x.
 
@@ -85,7 +85,7 @@ export LD_LIBRARY_PATH=$CUDNN_DIR/lib64:$LD_LIBRARY_PATH
 apt install libopencv-dev
 ```
 
-**Step 4.** (Optional) Download converted onnx models by `mmdeploy-converted-models`
+**Step 4.** (Optional) Download converted onnx models by `mmdeploy-converted-models`.
 ```bash
 apt install git-lfs
 git clone https://github.com/liu-mengyang/mmdeploy-converted-models --depth=1
