@@ -92,6 +92,7 @@ pub fn text_detector_apply(text_detector: mmdeploy_text_detector_t, img: &Mat, m
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let text_det_result = TextDetResult::new();

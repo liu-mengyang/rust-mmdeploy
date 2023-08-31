@@ -73,6 +73,7 @@ pub fn text_recognizer_apply_bbox(text_recognizer: mmdeploy_text_recognizer_t, i
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let rec_result = RecResult::new();

@@ -1,11 +1,12 @@
 [package]
 name = "mmdeploy"
-version = "0.9.0"
+version = "1.0.0"
 edition = "2021"
 license = "Apache-2.0"
 description = "Safe MMDeploy Rust wrapper"
 repository = "https://github.com/liu-mengyang/rust-mmdeploy"
 keywords = ["mmdeploy", "deployment"]
+authors = ["Liu Mengyang","VanderBieu"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

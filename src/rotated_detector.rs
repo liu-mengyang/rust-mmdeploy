@@ -77,6 +77,7 @@ pub fn rotated_detector_apply(rotated_detector: mmdeploy_rotated_detector_t, img
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let rot_result = RotResult::new();

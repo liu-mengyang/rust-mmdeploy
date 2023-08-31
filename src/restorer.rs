@@ -73,6 +73,7 @@ pub fn restorer_apply(restorer: mmdeploy_restorer_t, img: &Mat, mat_count: i32) 
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let res_result = ResResult::new();
