@@ -88,6 +88,7 @@ pub fn pose_detector_apply(pose_detector: mmdeploy_pose_detector_t, img: &Mat, m
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let pose_result = PoseResult::new();

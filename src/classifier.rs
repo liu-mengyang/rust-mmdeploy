@@ -74,6 +74,7 @@ pub fn classifier_apply(classifier: mmdeploy_classifier_t, img: &Mat, mat_count:
             channel: 3,
             format: mmdeploy_pixel_format_t_MMDEPLOY_PIXEL_FORMAT_BGR,
             type_: mmdeploy_data_type_t_MMDEPLOY_DATA_TYPE_UINT8,
+            device: std::ptr::null_mut(),
         };
 
         let cls_result = ClsResult::new();
