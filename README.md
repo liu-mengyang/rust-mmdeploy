@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Safe MMDeploy Rust wrapper.
+Safe MMDeploy Rust wrapper. This project aims to provide a Rust wrapper for MMDeploy>=1.0.0.
 
 ## News
 
@@ -61,21 +61,44 @@ Pay attention to the version of cuda: 11. So this script is only supported for m
 
 ```bash
 # Download and link to MMDeploy-tensorrt pre-built package
-wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.9.0/mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0.tar.gz
-tar -zxvf mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0.tar.gz
-pushd mmdeploy-0.9.0-linux-x86_64-cuda11.1-tensorrt8.2.3.0
-export MMDEPLOY_DIR=$(pwd)/sdk
-export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
+wget https://github.com/open-mmlab/mmdeploy/releases/download/v1.1.0/mmdeploy-1.1.0-linux-x86_64-cuda11.3.tar.gz
+tar -zxvf mmdeploy-1.1.0-linux-x86_64-cuda11.1.tar.gz
+pushd mmdeploy-1.1.0-linux-x86_64-cuda11.3
+export MMDEPLOY_DIR=$(pwd)
+export LD_LIBRARY_PATH=$MMDEPLOY_DIR/lib:$LD_LIBRARY_PATH
 popd
+```
+then follow the instruction in MMDEPLOY_DIR to build the SDK.
 
+```bash
 # Download and link to TensorRT engine
 # !!! Download TensorRT-8.2.3.0 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This link maybe helpful: https://developer.nvidia.com/nvidia-tensorrt-8x-download.
-export TENSORRT_DIR=$(pwd)/TensorRT-8.2.3.0
+export TENSORRT_DIR=$MMDEPLOY_DIR/thirdparty/tensorrt
 export LD_LIBRARY_PATH=${TENSORRT_DIR}/lib:$LD_LIBRARY_PATH
-
+export ONNXRUNTIME_DIR=$MMDEPLOY_DIR/thirdparty/onnxruntime
+export LD_LIBRARY_PATH=${ONNXRUNTIME_DIR}/lib:$LD_LIBRARY_PATH
+```
+```bash
 # Download and link to CUDA and cuDNN libraries
 # !!! Download cuDNN 8.2.1 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This two links are maybe helpful: CUDA: https://developer.nvidia.com/cuda-downloads; cuDNN: https://developer.nvidia.com/rdp/cudnn-download.
-export CUDNN_DIR=$(pwd)/cuda
+export CUDNN_DIR=/usr/local/cuda
+export LD_LIBRARY_PATH=$CUDNN_DIR/lib64:$LD_LIBRARY_PATH
+```
+
+If you build MMDeploy SDK from source, then you should set MMDEPLOY_DIR and LD_LIBRARY_PATH as follows:
+
+```bash
+export MMDEPLOY_DIR=/the/path/to/mmdeploy/build/install
+export LD_LIBRARY_PATH=$MMDEPLOY_DIR/lib:$LD_LIBRARY_PATH
+```
+then you need to configure the path of TensorRT, ONNXRUNTIME, CUDA and cuDNN as follows:
+
+```bash
+export TENSORRT_DIR=/the/path/to/tensorrt
+export LD_LIBRARY_PATH=${TENSORRT_DIR}/lib:$LD_LIBRARY_PATH
+export ONNXRUNTIME_DIR=/the/path/to/onnxruntime
+export LD_LIBRARY_PATH=${ONNXRUNTIME_DIR}/lib:$LD_LIBRARY_PATH
+export CUDNN_DIR=/usr/local/cuda
 export LD_LIBRARY_PATH=$CUDNN_DIR/lib64:$LD_LIBRARY_PATH
 ```
 
