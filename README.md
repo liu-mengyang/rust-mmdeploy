@@ -8,6 +8,7 @@ Safe MMDeploy Rust wrapper. This project aims to provide a Rust wrapper for MMDe
 
 ## News
 
+- (2024.12.24) Bump to MMDeploy v1.1.0.
 - (2022.9.29) This repo has been added to the [OpenMMLab ecosystem](https://openmmlab.com/ecosystem).
 - (2022.9.27) This repo has been added to the [MMDeploy CI](https://github.com/open-mmlab/mmdeploy/blob/master/.github/workflows/rust_api.yml).
 
@@ -21,7 +22,7 @@ The following guidance is tested on Ubuntu OS on x86 device.
 
 ```bash
 apt install curl
-curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh
+curl https://sh.rustup.rs -sSf | sh
 ```
 
 **Step 1.** Install Clang and Rust required by `Bindgen`.
@@ -40,47 +41,16 @@ apt install wget
 
 ```bash
 # Download and link to MMDeploy-onnxruntime pre-built package
-wget https://github.com/open-mmlab/mmdeploy/releases/download/v0.9.0/mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-tar -zxvf mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1.tar.gz
-pushd mmdeploy-0.9.0-linux-x86_64-onnxruntime1.8.1
-export MMDEPLOY_DIR=$(pwd)/sdk
-export LD_LIBRARY_PATH=$MMDEPLOY_DIR/sdk/lib:$LD_LIBRARY_PATH
-popd
-
-# Download and link to OnnxRuntime engine
-wget https://github.com/microsoft/onnxruntime/releases/download/v1.8.1/onnxruntime-linux-x64-1.8.1.tgz
-tar -zxvf onnxruntime-linux-x64-1.8.1.tgz
-cd onnxruntime-linux-x64-1.8.1
-export ONNXRUNTIME_DIR=$(pwd)
-export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
-```
-
-**If you want to deploy models with TensorRT:**
-
-Pay attention to the version of cuda: 11. So this script is only supported for machines with cuda-11.x.
-
-```bash
-# Download and link to MMDeploy-tensorrt pre-built package
 wget https://github.com/open-mmlab/mmdeploy/releases/download/v1.1.0/mmdeploy-1.1.0-linux-x86_64-cuda11.3.tar.gz
-tar -zxvf mmdeploy-1.1.0-linux-x86_64-cuda11.1.tar.gz
-pushd mmdeploy-1.1.0-linux-x86_64-cuda11.3
+tar -zxvf mmdeploy-1.1.0-linux-x86_64-cuda11.3.tar.gz
+cd mmdeploy-1.1.0-linux-x86_64-cuda11.3
 export MMDEPLOY_DIR=$(pwd)
-export LD_LIBRARY_PATH=$MMDEPLOY_DIR/lib:$LD_LIBRARY_PATH
-popd
-```
-then follow the instruction in MMDEPLOY_DIR to build the SDK.
-
-```bash
+export ONNXRUNTIME_DIR=$(pwd)/thirdparty/onnxruntime
+export LD_LIBRARY_PATH=$ONNXRUNTIME_DIR/lib:$LD_LIBRARY_PATH
 # Download and link to TensorRT engine
 # !!! Download TensorRT-8.2.3.0 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This link maybe helpful: https://developer.nvidia.com/nvidia-tensorrt-8x-download.
-export TENSORRT_DIR=$MMDEPLOY_DIR/thirdparty/tensorrt
-export LD_LIBRARY_PATH=${TENSORRT_DIR}/lib:$LD_LIBRARY_PATH
-export ONNXRUNTIME_DIR=$MMDEPLOY_DIR/thirdparty/onnxruntime
-export LD_LIBRARY_PATH=${ONNXRUNTIME_DIR}/lib:$LD_LIBRARY_PATH
-```
-```bash
-# Download and link to CUDA and cuDNN libraries
-# !!! Download cuDNN 8.2.1 CUDA 11.x tar package from NVIDIA, and extract it to the current directory. This two links are maybe helpful: CUDA: https://developer.nvidia.com/cuda-downloads; cuDNN: https://developer.nvidia.com/rdp/cudnn-download.
+export TENSORRT_DIR=$(pwd)/thirdparty/tensorrt
+export LD_LIBRARY_PATH=$TENSORRT_DIR/lib:$LD_LIBRARY_PATH
 export CUDNN_DIR=/usr/local/cuda
 export LD_LIBRARY_PATH=$CUDNN_DIR/lib64:$LD_LIBRARY_PATH
 ```
@@ -122,7 +92,7 @@ Please read the previous section to make sure the required packages have been in
 Update your *Cargo.toml*
 
 ```toml
-mmdeploy = "0.9.0"
+mmdeploy = "1.1.0"
 ```
 
 ## APIs for MM Codebases
@@ -132,7 +102,7 @@ Take a look by running some examples! In these examples, `CPU` is the default in
 
 ### Convert Models
 
-You can 
+You can
 
 * Directly use converted models [here](https://github.com/liu-mengyang/mmdeploy-converted-models) ^_^
 * Or follow [MMDeploy documentation](https://mmdeploy.readthedocs.io/en/latest/get_started.html#convert-model) to install and convert appropriate models
@@ -246,5 +216,4 @@ A rendered result we can take a look located in the current directory and is nam
 
 - [x] PR for contributing a rust-mmdeploy-CI into MMDeploy
 - [x] Test with TensorRT prebuilt package
-- [ ] Documentation of rust-mmdeploy and rust-mmdeploy-sys
-- [ ] Tutorial of rust-mmdeploy
+- [ ] Bump to the latest MMDeploy
